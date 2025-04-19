@@ -1,0 +1,14 @@
+RewriteEngine On
+
+# Remove .php extension
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([a-zA-Z0-9_-]+)$ $1.php [L]
+
+# Redirect to signin page without the .php extension
+RewriteCond %{REQUEST_URI} !^/signin$
+RewriteRule ^signin$ /signin.php [L]
+
+# Optional: force www or https
+# RewriteCond %{HTTPS} off
+# RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
